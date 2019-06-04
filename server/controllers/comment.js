@@ -5,7 +5,7 @@ import *as UserService from '../services/UserService';
 export const create = async (req, res, next) => {
   const commentTmp = req.body;
   const token = req.headers['authorization'];
-  let article = '';
+  let article;
   try {
     const userTmp = await UserService.getUserByToken(token);
     commentTmp.author = userTmp.nickName;
@@ -23,12 +23,16 @@ export const create = async (req, res, next) => {
   }
   res.json(article);
 };
-//deleteComment
+
 
 export const deleteComment = async (req, res, next) => {
   let articleTmp;
+  let commentToDelete;
   try {
-    articleTmp = await Article.findOne({hash: req.params.hashArticle});
+     articleTmp = await Article.findOne({hash: req.params.hashArticle});
+     commentToDelete=articleTmp.comments.find(obj=> obj.hash===req.params.hashComment);
+     articleTmp.comments.remove(commentToDelete);
+     await Article.findOneAndUpdate({hash: req.params.hashArticle}, articleTmp);
   } catch ({message}) {
     console.log(message);
     next({
@@ -39,5 +43,5 @@ export const deleteComment = async (req, res, next) => {
   //console.dir(articleTmp);
 
 
-  res.json(articleTmp);
+  res.json(commentToDelete);
 };
