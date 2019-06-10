@@ -39,6 +39,7 @@ const UserSchema = new Schema({
   nickName: {
     type: String,
     lowercase: true,
+    unique: 'Nick Name mast be unique',
     required: 'Nick name is required',
     trim: true,
   },

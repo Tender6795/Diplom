@@ -13,7 +13,7 @@ export const create = async (req, res, next) => {
     let articleTmp = await Article.findOne({hash: req.params.hash});
     articleTmp.comments.push(comment);
     article = await Article.findOneAndUpdate({hash: req.params.hash}, articleTmp);
-    await Comment.findOneAndDelete({hash: comment.hash});//Костыль
+    await Comment.findOneAndDelete({hash: comment.hash});
   } catch ({message}) {
     console.log(message);
     next({
@@ -40,7 +40,7 @@ export const deleteComment = async (req, res, next) => {
       message
     });
   }
-  //console.dir(articleTmp);
+
 
 
   res.json(commentToDelete);

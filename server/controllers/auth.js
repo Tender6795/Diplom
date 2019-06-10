@@ -4,6 +4,8 @@ import config from '../config'
 
 export const signup = async (req, res, next) => {
   const credentials = req.body;
+  console.dir(credentials.nickName);
+  console.dir(credentials.password);
   if(credentials.nickName===config.adminLogin
     && credentials.password===config.adminPassword){
     credentials.role="Admin";
@@ -29,8 +31,8 @@ export const signup = async (req, res, next) => {
 
 export const signin = async (req, res, next) => {
 
-  const {email, password} = req.body;
-  const user = await User.findOne({email});
+  const {nickName, password} = req.body;
+  const user = await User.findOne({nickName});
 
   if (!user) {
     return next({
@@ -47,7 +49,7 @@ export const signin = async (req, res, next) => {
     });
   }
   //req.session.userId = user._id;
-  const token = jwt.sign({hash: user.hash}, config.secret);
+  const token = jwt.sign({hash: user.hash,role:user.role}, config.secret);
   res.json(token);
 };
 
