@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Header from "./Header";
-// import Home from "./Home";
+ import Home from "./Home";
 import LoginPage from "./login/LoginPage";
 import SignupPage from "./singup/SignupPage";
 // import ContactForm from "./contacts/ContactForm";
@@ -16,7 +16,7 @@ class App extends Component {
         <Container>
           <Header />
           <Switch>
-            {/*<Route exact path="/" component={Home} />*/}
+            <Route exact path="/" component={Home} />
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={SignupPage} />
             {/*<Route path="/new-contact" component={ContactForm} />*/}

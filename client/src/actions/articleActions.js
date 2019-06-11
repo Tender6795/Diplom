@@ -2,40 +2,40 @@ import axios from 'axios';
 import { apiPrefix } from '../config.json';
 import * as actionTypes from './actionTypes';
 
-export function getContactsStart() {
+export function getArticlesStart() {
   return {
-    type: actionTypes.GET_CONTACTS_START,
+    type: actionTypes.GET_ARTICLES_START,
   };
 }
 
-export function getContactsSuccess(contacts) {
+export function getArticlesSuccess(articles) {
   return {
-    type: actionTypes.GET_CONTACTS_SUCCESS,
-    contacts
+    type: actionTypes.GET_ARTICLES_SUCCESS,
+    articles
   };
 }
 
-export function createNewContact(contact) {
+export function createNewArticle(article) {
   return {
-    type: actionTypes.CREATE_NEW_CONTACT,
-    contact
+    type: actionTypes.CREATE_NEW_ARTICLE,
+    article
   };
 }
 
-export function deleteContactFromState(hash) {
+export function deleteArticleFromState(hash) {
   return {
-    type: actionTypes.DELETE_CONTACT,
+    type: actionTypes.DELETE_ARTICLE,
     hash
   };
 }
 
-export function getContacts(search) {
+export function getArticles(search) {
   return dispatch => {
-    dispatch(getContactsStart());
-    return axios.get(`${apiPrefix}/api/contacts`
+    dispatch(getArticlesStart());
+    return axios.get(`${apiPrefix}/api/articles`
       // , {			params: { search }}
     ).then(response => {
-      dispatch(getContactsSuccess(response.data));
+      dispatch(getArticlesSuccess(response.data));
     });
   }
 }
@@ -51,31 +51,31 @@ export function getContacts(search) {
 // 	}
 // }
 
-export function getContactByHash(hash) {
-  return dispatch => {
-    return axios.get(`${apiPrefix}/api/${hash}`);
-  }
-}
+// export function getArticlesByHash(hash) {
+//   return dispatch => {
+//     return axios.get(`${apiPrefix}/api/${hash}`);
+//   }
+// }
 
-export function createContact(contactData) {
+export function createArticle(articleData) {
 //	console.dir(contactData);
   return dispatch => {
-    return axios.post(`${apiPrefix}/api/create`, contactData);
+    return axios.post(`${apiPrefix}/api/article/create`, articleData);
   }
 }
 
-export function updateContact(hash, contactData) {
-//	console.dir(contactData);
-  return dispatch => {
-    return axios.patch(`${apiPrefix}/api/${hash}`, contactData);
-  }
-}
+// export function updateContact(hash, contactData) {
+// //	console.dir(contactData);
+//   return dispatch => {
+//     return axios.patch(`${apiPrefix}/api/${hash}`, contactData);
+//   }
+// }
 
-export function deleteContact(hash) {
+export function deleteArticle(hash) {
   return dispatch => {
-    return axios.delete(`${apiPrefix}/api/${hash}`)
+    return axios.delete(`${apiPrefix}/api/article/${hash}`)
       .then(res => {
-        dispatch(deleteContactFromState(hash));
+        dispatch(deleteArticleFromState(hash));
       });
   }
 }
