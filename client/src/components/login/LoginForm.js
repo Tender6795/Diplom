@@ -38,9 +38,11 @@ class LoginForm extends Component {
     if (this.isValid()) {
       this.setState({errors: {}, isLoading: true});
       this.props.login(this.state).catch(
-        (err) => this.setState({
-          errors: err.response ?
-            err.response.data.errors : {}, isLoading: false
+        (err) =>
+          // console.dir(err)
+          this.setState({
+          errors: err.response.data?err.response.data:err,
+          isLoading: false
         })
       );
     }
@@ -57,25 +59,30 @@ class LoginForm extends Component {
     }
     return (
       <Form error onSubmit={this.onSubmit}>
-        <Message error content={errors.form}/>
+        {errors.message && <Message error content={errors.message}/>}
         <Form.Field>
-          <label>Nick Name</label>
-          <input
-            type="text"
-            name="nickName"
-            onChange={this.onChange}
-            value={this.state.nickName}
-            placeholder="Nick Name"/>
+
+          <Form.Input icon='user' iconPosition='left'
+                      placeholder='Nickname'
+                      value={this.state.nickName}
+                      name="nickName"
+                      onChange={this.onChange}
+                      type="text"
+          />
+
         </Form.Field>
         <Message error content={errors.nickName}/>
         <Form.Field>
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            onChange={this.onChange}
-            value={this.state.password}
-            placeholder="Password"/>
+          <Form.Input icon='lock'
+                      iconPosition='left'
+                      // label='Password'
+                      type='password'
+                      name="password"
+                      onChange={this.onChange}
+                      value={this.state.password}
+                      placeholder="Password"/>
+
+
         </Form.Field>
         <Message error content={errors.password}/>
         <Loader active={this.state.isLoading} size='medium'>Loading</Loader>

@@ -51,11 +51,11 @@ export function getArticles(search) {
 // 	}
 // }
 
-// export function getArticlesByHash(hash) {
-//   return dispatch => {
-//     return axios.get(`${apiPrefix}/api/${hash}`);
-//   }
-// }
+export function getArticleByHash(hash) {
+  return dispatch => {
+    return axios.get(`${apiPrefix}/api/${hash}`);
+  }
+}
 
 export function createArticle(articleData) {
 //	console.dir(contactData);
@@ -64,12 +64,12 @@ export function createArticle(articleData) {
   }
 }
 
-// export function updateContact(hash, contactData) {
-// //	console.dir(contactData);
-//   return dispatch => {
-//     return axios.patch(`${apiPrefix}/api/${hash}`, contactData);
-//   }
-// }
+export function updateArticle(hash, articleData) {
+//	console.dir(contactData);
+  return dispatch => {
+    return axios.patch(`${apiPrefix}/api/${hash}`, articleData);
+  }
+}
 
 export function deleteArticle(hash) {
   return dispatch => {

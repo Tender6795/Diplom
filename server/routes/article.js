@@ -6,6 +6,8 @@ import isAdmin from '../middlewares/isAdmin'
 const router = express.Router();
 
 router.get('/articles', ArticleController.all)
+  .get('/:hash', ArticleController.searchByHash)
   .post('/article/create', isAdmin,imageUpload.single('photo'), ArticleController.create)
-    .delete('/article/:hash', isAdmin, ArticleController.deleteArticle);
+  .patch('/:hash',imageUpload.single('photo'), ArticleController.update)
+  .delete('/article/:hash', isAdmin, ArticleController.deleteArticle);
 export default router;

@@ -46,3 +46,37 @@ export const deleteArticle=async (req,res,next)=>{
   }
   res.json(article);
 };
+//update
+
+export const update=async (req,res,next)=>{
+  let article;
+  let {hash} = req.params;
+//  console.dir(req.body);
+  try{
+    const contactTmp=req.body;
+    articleTmp.pathToPicture=req.file.path;
+    article=await Article.findOneAndUpdate({hash: hash },contactTmp);
+//console.dir(req.body);
+  } catch ({message}) {
+    next({
+      status: 400,
+      message
+    });
+  }
+  res.json(article);
+};
+export const searchByHash=async (req,res,next)=> {
+  let article;
+  let {hash} = req.params;
+  try {
+    article = await Article.findOne({hash});
+  } catch ({message}) {
+    next({
+      status: 400,
+      message
+    });
+
+  }
+  // console.dir(contact);
+  res.json(article);
+};
