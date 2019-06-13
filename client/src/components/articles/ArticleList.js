@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getArticles} from '../../actions/articleActions';
-import {Grid, GridColumn, GridRow, Divider, Header, Loader} from 'semantic-ui-react';
+import {Grid, Header, Loader} from 'semantic-ui-react';
 import ArticleItem from './ArticleItem';
 
 class ArticlesList extends Component {
