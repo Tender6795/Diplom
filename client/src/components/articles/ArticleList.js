@@ -17,6 +17,7 @@ class ArticlesList extends Component {
       if (this.props.loading) {
         content = <Loader active size='medium'>Loading</Loader>
       } else {
+        console.dir(this.props.articles);
         content = this.props.articles.filter(article => {
           for (let key in article) {
             if (article[key].toString().includes(this.props.searchText)) {
@@ -27,7 +28,9 @@ class ArticlesList extends Component {
 
         }).map(article => (
           <Grid.Row key={article.hash} >
-            <ArticleItem article={article} isAdmin={this.props.isAdmin}/>
+            <ArticleItem article={article}
+                         isAdmin={this.props.isAdmin}
+                         isAuthenticated={this.props.isAuthenticated}/>
             <br/>
           </Grid.Row>
 
@@ -51,10 +54,12 @@ ArticlesList.propTypes = {
 
 function mapStateToProps(state) {
   //console.log(state.articles);
+  console.dir(state);
   return {
     loading: state.loading,
     articles: state.articles.articles,
     isAdmin: state.auth.isAdmin,
+    isAuthenticated: state.auth.isAuthenticated,
   };
 }
 

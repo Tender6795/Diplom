@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { apiPrefix } from '../config.json';
 import * as actionTypes from './actionTypes';
+// import comment from "../../../server/models/comment";
 
 export function getArticlesStart() {
   return {
@@ -27,6 +28,18 @@ export function deleteArticleFromState(hash) {
     type: actionTypes.DELETE_ARTICLE,
     hash
   };
+}
+
+export function deleteComment(hashArticle,hashComment) {
+  return dispatch => {
+    return axios.delete(`${apiPrefix}/api/comment/:${hashArticle}/;${hashComment}`);
+  }
+}
+
+export function addComment(hash,commentData) {
+  return dispatch => {
+    return axios.post(`${apiPrefix}/api/comment/:${hash}`, commentData);
+  }
 }
 
 export function getArticles(search) {

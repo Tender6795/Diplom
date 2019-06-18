@@ -6,6 +6,7 @@ import {Link} from "react-router-dom";
 import {Image, Button, Grid, Header, Container} from 'semantic-ui-react';
 import {deleteArticle} from '../../actions/articleActions';
 import {apiPrefix} from '../../config';
+import CommentList from '../comment/CommentList';
 
 
 class ArticleItem extends Component {
@@ -41,12 +42,11 @@ class ArticleItem extends Component {
     const path = apiPrefix + this.props.article.pathToPicture.replace('public', '');
     const article = this.props.article;
     const isAdmin = this.props.isAdmin;
+    const  isAuthenticated  = this.props.isAuthenticated;
     return (
       <Grid style={{width: '100%'}}>
         <Grid.Column width={7}>
-          {/*<Link to={`/articleMaxItem/${article.hash}`}>*/}
-            {/*<Image size='tiny' src={path} style={{marginLeft: '20px'}}/>*/}
-          {/*</Link>*/}
+
           <Image size={this.state.pictureSize} src={path} style={{marginLeft: '20px'}}/>
           <Button onClick={this.onStateOfArticleChange.bind(this)}primary style={{marginLeft: '20px'}}>
             {this.state.textButton}
@@ -54,9 +54,6 @@ class ArticleItem extends Component {
         </Grid.Column>
         <Grid.Column width={4}>
           <Header as='h2'>
-            {/*<Link to={`/articleMaxItem/${article.hash}`} >*/}
-            {/*{article.title}*/}
-            {/*</Link>*/}
             {article.title}
           </Header>
           <Header as='h4'>{article.author}</Header>
@@ -66,7 +63,12 @@ class ArticleItem extends Component {
           <p>
             {article.text}
           </p>
+          <CommentList article={article} />
+          {isAuthenticated&&
+          <h1>Зареган</h1>
+          }
         </Container>
+
         }
         {isAdmin &&
         <Grid.Column width={4} style={{marginLeft: '60px', marginTop: '60px'}}>
