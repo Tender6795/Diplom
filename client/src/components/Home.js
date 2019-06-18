@@ -62,7 +62,6 @@ class Home extends Component {
 
         <Segment attached='bottom'>
            <ArticleList searchText={this.state.searchText}/>
-
         </Segment>
       </Container>
     );

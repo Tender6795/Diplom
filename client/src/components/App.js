@@ -5,7 +5,8 @@ import Header from "./Header";
  import Home from "./Home";
 import LoginPage from "./login/LoginPage";
 import SignupPage from "./singup/SignupPage";
-// import ContactForm from "./contacts/ContactForm";
+import ArticleForm from "./articles/ArticleForm";
+import ArticleMaxItem from './articles/ArticleMaxItem';
 import NotFound from "./NotFound";
 import { Container } from 'semantic-ui-react'
 
@@ -19,8 +20,9 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/login" component={LoginPage} />
             <Route path="/signup" component={SignupPage} />
-            {/*<Route path="/new-contact" component={ContactForm} />*/}
-            {/*<Route path="/edit-contact/:hash" component={ContactForm} />*/}
+            <Route path="/new-article" component={ArticleForm} />
+            <Route path="/edit-article/:hash" component={ArticleForm} />
+            <Route path='/articleMaxItem/:hash' component={ArticleMaxItem}/>
             <Route component={NotFound} />
           </Switch>
         </Container>
@@ -28,5 +30,6 @@ class App extends Component {
     );
   }
 };
+
 
 export default App;
