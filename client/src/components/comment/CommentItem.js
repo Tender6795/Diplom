@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+// import { withRouter } from 'react-router-dom';
+// import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
-import { Card, Image, Button } from 'semantic-ui-react';
- import { deleteComment } from '../../actions/articleActions';
-import {apiPrefix} from '../../config';
+
+import { Card,  Button } from 'semantic-ui-react';
+ // import { deleteComment } from '../../actions/articleActions';
+// import {apiPrefix} from '../../config';
 
 
 class CommentItem extends Component {
@@ -24,11 +24,10 @@ class CommentItem extends Component {
     this.props.deleteComment(this.props.article.hash,this.props.comment.hash);
   }
 
+
+
   render() {
-    // console.dir(this.props.contact);
-   // const path=apiPrefix+this.props.contact.pathToPicture.replace('public','');
-  //  const contact = this.props.contact;
-    // console.dir(contact);
+
     return (
       <Card fluid style={{ height: "100%" }}>
         <Card.Content>
@@ -36,8 +35,11 @@ class CommentItem extends Component {
         </Card.Content>
         <Card.Description>
           {this.props.comment.text}
+          {/*{this.props.isAdmin+" "+this.props.isAuthenticated}*/}
+
         </Card.Description>
 
+        {this.props.isAdmin &&<Button basic color='red'>Удалить коментарий</Button>}
       </Card >
     );
   }

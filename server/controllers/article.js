@@ -53,9 +53,9 @@ export const update=async (req,res,next)=>{
   let {hash} = req.params;
 //  console.dir(req.body);
   try{
-    const contactTmp=req.body;
+    const articleTmp=req.body;
     articleTmp.pathToPicture=req.file.path;
-    article=await Article.findOneAndUpdate({hash: hash },contactTmp);
+    article=await Article.findOneAndUpdate({hash: hash },articleTmp);
 //console.dir(req.body);
   } catch ({message}) {
     next({

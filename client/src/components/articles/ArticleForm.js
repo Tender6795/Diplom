@@ -74,14 +74,14 @@ class ArticleForm extends Component {
       this.setState({errors: {}, isLoading: true});
 
       const fd = new FormData();
-      console.log(this.state);
+      // console.log(this.state);
       fd.append('title', this.state.title);
       fd.append('text', this.state.text);
       fd.append('author', this.state.author);
 
 
       if (this.state.photo) {
-        console.log(this.state.photo);
+
         fd.append('photo', this.state.photo, this.state.photo.name);
       }
 
@@ -101,7 +101,7 @@ class ArticleForm extends Component {
                 isLoading: false
               }));
       } else {
-        console.log("create article");
+
         this.props.createArticle(fd)
           .then((res) => {
               this.setState({

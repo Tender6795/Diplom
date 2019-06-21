@@ -7,7 +7,7 @@ import {Image, Button, Grid, Header, Container} from 'semantic-ui-react';
 import {deleteArticle} from '../../actions/articleActions';
 import {apiPrefix} from '../../config';
 import CommentList from '../comment/CommentList';
-
+import CommentForm from '../comment/CommentForm';
 
 class ArticleItem extends Component {
   constructor(props) {
@@ -45,41 +45,48 @@ class ArticleItem extends Component {
     const  isAuthenticated  = this.props.isAuthenticated;
     return (
       <Grid style={{width: '100%'}}>
+
         <Grid.Column width={7}>
 
           <Image size={this.state.pictureSize} src={path} style={{marginLeft: '20px'}}/>
-          <Button onClick={this.onStateOfArticleChange.bind(this)}primary style={{marginLeft: '20px'}}>
+          <Button onClick={this.onStateOfArticleChange.bind(this)}
+                  primary style={{marginLeft: '20px'}}>
             {this.state.textButton}
           </Button>
+
         </Grid.Column>
         <Grid.Column width={4}>
           <Header as='h2'>
             {article.title}
           </Header>
           <Header as='h4'>{article.author}</Header>
+          {isAdmin &&
+            <div className='ui two buttons'>
+              <Button inverted color='green' style={{width:'60%'}}>
+                <Link to={`/edit-article/${article.hash}`}>Редактировать</Link>
+              </Button>
+              <Button onClick={this.onDeleteClick.bind(this)} inverted color='red'>Удалить</Button>
+            </div>
+
+          }
         </Grid.Column>
         {this.state.showText &&
+
         <Container text>
           <p>
             {article.text}
           </p>
-          <CommentList article={article} />
-          {isAuthenticated&&
-          <h1>Зареган</h1>
+
+          {isAuthenticated ?
+            <CommentForm/>
+            :
+            <h3>Зайдите в свой аккаунт для добавления комментария</h3>
           }
+          <CommentList article={article} />
         </Container>
 
         }
-        {isAdmin &&
-        <Grid.Column width={4} style={{marginLeft: '60px', marginTop: '60px'}}>
-          <div className='ui two buttons'>
-            <Button basic color='green'>
-              <Link to={`/edit-article/${article.hash}`}>Edit</Link>
-            </Button>
-            <Button onClick={this.onDeleteClick.bind(this)} basic color='red'>Delete</Button>
-          </div>
-        </Grid.Column>
-        }
+
       </Grid>
     );
   }

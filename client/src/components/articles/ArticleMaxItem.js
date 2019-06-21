@@ -3,7 +3,7 @@ import {Image, Button, Container, Grid, Header} from 'semantic-ui-react';
 import {apiPrefix} from '../../config';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {getArticleByHash, getArticles} from '../../actions/articleActions';
+// import {getArticleByHash, getArticles} from '../../actions/articleActions';
 import PropTypes from "prop-types";
 
 

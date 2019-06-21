@@ -6,7 +6,7 @@ import Header from "./Header";
 import LoginPage from "./login/LoginPage";
 import SignupPage from "./singup/SignupPage";
 import ArticleForm from "./articles/ArticleForm";
-import ArticleMaxItem from './articles/ArticleMaxItem';
+// import ArticleMaxItem from './articles/ArticleMaxItem';
 import NotFound from "./NotFound";
 import { Container } from 'semantic-ui-react'
 
@@ -22,7 +22,6 @@ class App extends Component {
             <Route path="/signup" component={SignupPage} />
             <Route path="/new-article" component={ArticleForm} />
             <Route path="/edit-article/:hash" component={ArticleForm} />
-            <Route path='/articleMaxItem/:hash' component={ArticleMaxItem}/>
             <Route component={NotFound} />
           </Switch>
         </Container>

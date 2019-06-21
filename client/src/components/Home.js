@@ -43,7 +43,8 @@ class Home extends Component {
           <Menu.Menu>
             <Menu.Item>
               <Link to="/new-article">
-                <Button circular icon='add'>
+                <Button  inverted color='green'>
+                  Добавить статью
                 </Button>
               </Link>
             </Menu.Item>
