@@ -36,7 +36,12 @@ class ArticleItem extends Component {
       pictureSize:this.state.pictureSize==='huge'?'small':'huge',
       textButton:this.state.textButton === 'Скрыть статью'?'Показать статью':'Скрыть статью',
     })
+    this.render();
   }
+
+
+
+
   render() {
 
     const path = apiPrefix + this.props.article.pathToPicture.replace('public', '');
@@ -78,7 +83,7 @@ class ArticleItem extends Component {
           </p>
 
           {isAuthenticated ?
-            <CommentForm/>
+            <CommentForm hash={article.hash} />
             :
             <h3>Зайдите в свой аккаунт для добавления комментария</h3>
           }

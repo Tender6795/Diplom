@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 // import { withRouter } from 'react-router-dom';
 // import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-import { Card,  Button } from 'semantic-ui-react';
- // import { deleteComment } from '../../actions/articleActions';
+import {Card, Button} from 'semantic-ui-react';
+import {deleteComment} from '../../actions/commentActions';
+import {connect} from "react-redux";
+
 // import {apiPrefix} from '../../config';
 
 
@@ -12,24 +14,26 @@ class CommentItem extends Component {
   constructor(props) {
     super(props);
     this.redirect = this.redirect.bind(this);
+
   }
 
   redirect() {
-    this.props.history.push({
-    });
+    this.props.history.push({});
   }
 
   onDeleteClick(e) {
     e.preventDefault();
-    this.props.deleteComment(this.props.article.hash,this.props.comment.hash);
-  }
+    this.props.rerender();
+    this.props.deleteComment(this.props.article.hash, this.props.comment.hash);
 
+
+  }
 
 
   render() {
 
     return (
-      <Card fluid style={{ height: "100%" }}>
+      <Card fluid style={{height: "100%"}}>
         <Card.Content>
           <Card.Header>{this.props.comment.author}</Card.Header>
         </Card.Content>
@@ -39,14 +43,21 @@ class CommentItem extends Component {
 
         </Card.Description>
 
-        {this.props.isAdmin &&<Button basic color='red'>Удалить коментарий</Button>}
-      </Card >
+        {this.props.isAdmin &&
+        <Button basic color='red'
+                onClick={this.onDeleteClick.bind(this)}>
+          Удалить коментарий</Button>}
+      </Card>
     );
   }
 }
 
-CommentItem.propTypes = {
-  deleteComment: PropTypes.func
-};
 
-export default CommentItem;
+function mapStateToProps(state) {
+  return {
+    auth: state.auth,
+  };
+}
+
+export default connect(mapStateToProps, {deleteComment})(CommentItem);
+// export default CommentItem;
