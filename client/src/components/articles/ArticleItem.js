@@ -7,7 +7,7 @@ import {Image, Button, Grid, Header, Container} from 'semantic-ui-react';
 import {deleteArticle} from '../../actions/articleActions';
 import {apiPrefix} from '../../config';
 import CommentList from '../comment/CommentList';
-import CommentForm from '../comment/CommentForm';
+
 
 class ArticleItem extends Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class ArticleItem extends Component {
       showText: false,
       pictureSize:'small',
       textButton:'Показать статью',
+      comments: this.props.article.comments
     }
   }
 
@@ -27,6 +28,7 @@ class ArticleItem extends Component {
   onDeleteClick(e) {
     e.preventDefault();
     this.props.deleteArticle(this.props.article.hash);
+
   }
 
   onStateOfArticleChange(e){
@@ -35,9 +37,10 @@ class ArticleItem extends Component {
       showText: !this.state.showText,
       pictureSize:this.state.pictureSize==='huge'?'small':'huge',
       textButton:this.state.textButton === 'Скрыть статью'?'Показать статью':'Скрыть статью',
-    })
+    });
     this.render();
   }
+
 
 
 
@@ -77,17 +80,13 @@ class ArticleItem extends Component {
         </Grid.Column>
         {this.state.showText &&
 
-        <Container text>
-          <p>
+        <Container  >
+          <pre style={{ whiteSpace: 'pre-wrap'}}>
             {article.text}
-          </p>
+          </pre>
 
-          {isAuthenticated ?
-            <CommentForm hash={article.hash} />
-            :
-            <h3>Зайдите в свой аккаунт для добавления комментария</h3>
-          }
-          <CommentList article={article} />
+
+          <CommentList article={article}/>
         </Container>
 
         }

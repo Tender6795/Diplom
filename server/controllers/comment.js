@@ -6,14 +6,16 @@ export const create = async (req, res, next) => {
   const commentTmp = req.body;
   const token = req.headers['authorization'];
   let article;
+  let articleTmp;
   try {
     const userTmp = await UserService.getUserByToken(token);
     commentTmp.author = userTmp.nickName;
     let comment = await Comment.create(commentTmp);
-    let articleTmp = await Article.findOne({hash: req.params.hash});
+    articleTmp = await Article.findOne({hash: req.params.hash});
     articleTmp.comments.push(comment);
-    article = await Article.findOneAndUpdate({hash: req.params.hash}, articleTmp);
+    await Article.findOneAndUpdate({hash: req.params.hash}, articleTmp);
     await Comment.findOneAndDelete({hash: comment.hash});
+    articleTmp=await Article.find({});
   } catch ({message}) {
     console.log(message);
     next({
@@ -21,7 +23,7 @@ export const create = async (req, res, next) => {
       message
     });
   }
-  res.json(article);
+  res.json(articleTmp);
 };
 
 
@@ -33,6 +35,7 @@ export const deleteComment = async (req, res, next) => {
      commentToDelete=articleTmp.comments.find(obj=> obj.hash===req.params.hashComment);
      articleTmp.comments.remove(commentToDelete);
      await Article.findOneAndUpdate({hash: req.params.hashArticle}, articleTmp);
+     articleTmp=await Article.find({});
   } catch ({message}) {
     console.log(message);
     next({
@@ -43,5 +46,5 @@ export const deleteComment = async (req, res, next) => {
 
 
 
-  res.json(commentToDelete);
+  res.json(articleTmp );
 };

@@ -14,7 +14,6 @@ class CommentItem extends Component {
   constructor(props) {
     super(props);
     this.redirect = this.redirect.bind(this);
-
   }
 
   redirect() {
@@ -23,10 +22,8 @@ class CommentItem extends Component {
 
   onDeleteClick(e) {
     e.preventDefault();
-    this.props.rerender();
-    this.props.deleteComment(this.props.article.hash, this.props.comment.hash);
-
-
+    this.props.deleteComment(this.props.article.hash, this.props.comment.hash)
+      .then(()=>this.props.rerender());
   }
 
 
@@ -39,7 +36,6 @@ class CommentItem extends Component {
         </Card.Content>
         <Card.Description>
           {this.props.comment.text}
-          {/*{this.props.isAdmin+" "+this.props.isAuthenticated}*/}
 
         </Card.Description>
 

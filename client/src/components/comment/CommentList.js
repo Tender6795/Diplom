@@ -1,18 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-// import PropTypes from 'prop-types';
- import {getArticles} from '../../actions/articleActions';
+import {getArticles} from '../../actions/articleActions';
 import {Grid} from 'semantic-ui-react';
 import CommentItem from './CommentItem';
-//import {getArticles} from "../../actions/articleActions";
-
-// import CommentForm from '../comment/CommentForm';
-
+import CommentForm from './CommentForm';
 class CommentList extends Component {
 
-  componentDidMount() {
-    this.props.getArticles(null);
-  }
 
   constructor(props) {
     super(props);
@@ -21,14 +14,17 @@ class CommentList extends Component {
     }
   }
 
-  rerender=()=>{
-    this.setState({comments: [...this.props.article.comments]})
-    this.render();
+
+  rerender = () => {
+
+    this.setState({comments: [...this.props.article.comments]});
+
   };
 
-  render() {
-    let content = <p></p>;
 
+  render() {
+    const  isAuthenticated  = this.props.isAuthenticated;
+    let content = <p></p>;
     if (this.props.article.comments.length) {
       content = [...this.state.comments]
         .map(comment => (
@@ -37,24 +33,28 @@ class CommentList extends Component {
                          comment={comment}
                          isAdmin={this.props.isAdmin}
                          isAuthenticated={this.props.isAuthenticated}
-                       rerender={this.rerender}
+                         rerender={this.rerender}
             />
           </Grid.Row>
         ));
     }
 
-    return (<Grid>
-        {content}
-      </Grid>
+    return (
+      <div>
+        {isAuthenticated ?
+          <CommentForm hash={this.props.article.hash}  rerender={this.rerender}/>
+          :
+          <h3>Зайдите в свой аккаунт для добавления комментария</h3>
+        }
+        <Grid>
+          {content}
+        </Grid>
+      </div>
+
     );
   }
-};
+}
 
-// CommentList.propTypes = {
-//   loading: PropTypes.bool,
-//   articles: PropTypes.array,
-//   getArticles: PropTypes.func.isRequired
-// };
 
 function mapStateToProps(state) {
 
@@ -66,4 +66,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps,{getArticles})(CommentList);
+export default connect(mapStateToProps, {getArticles})(CommentList);

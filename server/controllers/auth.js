@@ -4,8 +4,7 @@ import config from '../config'
 
 export const signup = async (req, res, next) => {
   const credentials = req.body;
-  //console.dir(credentials.nickName);
-  //console.dir(credentials.password);
+
   if(credentials.nickName===config.adminLogin
     && credentials.password===config.adminPassword){
     credentials.role="Admin";
@@ -48,7 +47,7 @@ export const signin = async (req, res, next) => {
       message: "Wrong password"
     });
   }
-  //req.session.userId = user._id;
+
   const token = jwt.sign({hash: user.hash,role:user.role}, config.secret);
   res.json(token);
 };

@@ -21,7 +21,15 @@ export const create=async (req,res,next)=>{
   const articleTmp=req.body;
   let article;
   try{
-    articleTmp.pathToPicture=req.file.path;
+    if(req.file) {
+      articleTmp.pathToPicture=req.file.path;
+    }
+    else{
+      throw new Error(
+          "Картинка объязательна" ,
+        )
+    }
+
     article=await Article.create(articleTmp);
 
   }catch ({message}) {
@@ -54,7 +62,10 @@ export const update=async (req,res,next)=>{
 //  console.dir(req.body);
   try{
     const articleTmp=req.body;
-    articleTmp.pathToPicture=req.file.path;
+    if(req.file){
+      articleTmp.pathToPicture=req.file.path;
+    }
+
     article=await Article.findOneAndUpdate({hash: hash },articleTmp);
 //console.dir(req.body);
   } catch ({message}) {

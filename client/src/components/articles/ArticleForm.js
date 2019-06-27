@@ -81,7 +81,6 @@ class ArticleForm extends Component {
 
 
       if (this.state.photo) {
-
         fd.append('photo', this.state.photo, this.state.photo.name);
       }
 
@@ -130,7 +129,7 @@ class ArticleForm extends Component {
     return (
       <Container>
         <Grid centered>
-          <GridColumn width="6">
+          <GridColumn width="12">
             <Header textAlign="center" as="h1"></Header>
             <Form error onSubmit={this.onSubmit}>
               <Message success visible={this.state.message !== ""} content={this.state.message}/>
@@ -152,7 +151,9 @@ class ArticleForm extends Component {
                   name="text"
                   onChange={this.onChange}
                   value={this.state.text}
-                  placeholder="Text"/>
+                  placeholder="Text"
+                  style={{ minHeight: 400 }}
+                />
               </Form.Field>
               <Message error content={errors.text}/>
               <Form.Field>
@@ -169,6 +170,7 @@ class ArticleForm extends Component {
 
               <Form.Field>
                 <label>Photo</label>
+
                 <input type="file" name="photo" onChange={this.fileSelectedHandler}/>
               </Form.Field>
               <Loader active={this.state.isLoading} size='medium'>Loading</Loader>

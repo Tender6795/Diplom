@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {Button, Form, TextArea} from 'semantic-ui-react'
 import {createComment} from "../../actions/commentActions";
-import axios from "axios";
-import {apiPrefix} from "../../config";
+// import axios from "axios";
+// import {apiPrefix} from "../../config";
 import {connect} from "react-redux";
-import {createArticle, getArticleByHash, updateArticle} from "../../actions/articleActions";
+// import {createArticle, getArticleByHash, updateArticle} from "../../actions/articleActions";
 
 class CommentForm extends Component {
   constructor(props) {
@@ -42,12 +42,13 @@ class CommentForm extends Component {
     const comment = {
       text
     };
-    this.props.createComment(this.props.hash, comment);
+    this.props.createComment(this.props.hash, comment).then(()=>this.props.rerender());;
     this.setState({
       showButton: true,
       colorButton: 'red',
       text: ''
-    })
+    });
+
   }
 
 

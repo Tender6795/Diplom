@@ -27,6 +27,21 @@ export default (state = initialState, action) => {
         ...state,
         articles: state.articles.filter(c => c.hash !== action.hash)
       };
+    case actionTypes.START_CREATE_COMMENT:
+      return{
+        loading: true,
+      };
+      /////Коменты
+    case actionTypes.CREATE_COMMENT:
+      return{
+        loading: false,
+        articles: action.articles
+      };
+    case actionTypes.DELETE_COMMENT:
+      return{
+        loading: false,
+        articles: action.articles
+      };
     default:
       return state;
   }
