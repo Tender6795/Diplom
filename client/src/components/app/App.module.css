@@ -1,0 +1,15 @@
+.AppContainer {
+    width: 200% !important;
+    padding: 20px !important;
+    min-height: 100% !important;
+    opacity: .8 !important;
+
+}
+
+body {
+    background-image: url('../../assets/img/auto.gif');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+

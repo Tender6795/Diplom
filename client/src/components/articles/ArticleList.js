@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getArticles} from '../../actions/articleActions';
 import {Grid, Header, Loader} from 'semantic-ui-react';
-import ArticleItem from './ArticleItem';
+import ArticleItem from './articleItem/ArticleItem';
 
 class ArticlesList extends Component {
 
@@ -19,15 +19,15 @@ class ArticlesList extends Component {
       } else {
 
         content = this.props.articles.filter(article => {
-          for (let key in article) {
-            if (article[key].toString().includes(this.props.searchText)) {
-              return true;
-            }
-          }
-          return false;
+          // for (let key in article) {
+          //   if (article[key].toString().includes(this.props.searchText)) {
+          //     return true;
+          //   }
+          return article.title.toLowerCase().includes(this.props.searchText.toLowerCase()) ||
+            article.text.toLowerCase().includes(this.props.searchText.toLowerCase());
 
         }).map(article => (
-          <Grid.Row key={article.hash} >
+          <Grid.Row key={article.hash}  >
             <ArticleItem article={article}
                          isAdmin={this.props.isAdmin}
                          isAuthenticated={this.props.isAuthenticated}/>
@@ -39,7 +39,7 @@ class ArticlesList extends Component {
     }
 
     return (
-      <Grid>
+      <Grid >
         {content}
       </Grid>
     );
