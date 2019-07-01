@@ -81,51 +81,51 @@ class SignupForm extends Component {
                 <Message error content={errors.message}/>
 
                 <Form.Field>
-                  <label>Email *</label>
+
                   <input
                     type="email"
                     name="email"
                     onChange={this.onChange}
                     value={this.state.email}
-                    placeholder="Email"/><br/>
+                    placeholder="Email*"/><br/>
                 </Form.Field>
                 <Message error content={errors.email}/>
 
                 <Form.Field>
-                  <label>Nick Name *</label>
+
                   <input
                     type="text"
                     name="nickName"
                     onChange={this.onChange}
                     value={this.state.nickName}
-                    placeholder="Nick Name"/><br/>
+                    placeholder="Nick Name*"/><br/>
                 </Form.Field>
                 <Message error content={errors.nickName}/>
 
                 <Form.Field>
-                  <label>Password *</label>
+
                   <input
                     type="password"
                     name="password"
                     onChange={this.onChange}
                     value={this.state.password}
-                    placeholder="Password"/><br/>
+                    placeholder="Password*"/><br/>
                 </Form.Field>
                 <Message error content={errors.password}/>
                 <Form.Field>
-                  <label>Confirm password *</label>
+
                   <input
                     type="password"
                     name="passwordConfirm"
                     onChange={this.onChange}
                     value={this.state.passwordConfirm}
-                    placeholder="Confirm password"/><br/>
+                    placeholder="Confirm password*"/><br/>
                 </Form.Field>
                 <Message error content={errors.passwordConfirm}/>
 
 
                 <Form.Field>
-                  <label>First Name</label>
+
                   <input
                     type="text"
                     name="firstName"
@@ -135,7 +135,7 @@ class SignupForm extends Component {
                 </Form.Field>
 
                 <Form.Field>
-                  <label>Last Name</label>
+
                   <input
                     type="text"
                     name="lastName"

@@ -8,7 +8,7 @@ import jwtDecode from 'jwt-decode';
  import {setCurrentUser} from './actions/authActions';
 import setAuthorizationToken from './utils/setAuthorizationToken';
 import 'semantic-ui-css/semantic.min.css';
-import App from './components/App';
+import App from './components/app/App';
 
 const store = createStore(
   rootReducer,

@@ -1,6 +1,6 @@
 const config={
-    database:'mongodb://localhost:27017/MedicalBlog',
-    port:4001,
+    database:'mongodb://localhost:27017/AutoBlog',
+    port:4002,
     secret:"verysecretkey",
     adminLogin:'admin',
     adminPassword:'12345'

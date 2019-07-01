@@ -44,7 +44,7 @@ class CommentList extends Component {
         {isAuthenticated ?
           <CommentForm hash={this.props.article.hash}  rerender={this.rerender}/>
           :
-          <h3>Зайдите в свой аккаунт для добавления комментария</h3>
+          <h3 style={{padding:'20px',color:'red'}}>Зайдите в свой аккаунт для добавления комментария</h3>
         }
         <Grid>
           {content}

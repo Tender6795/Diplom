@@ -48,7 +48,7 @@ export const signin = async (req, res, next) => {
     });
   }
 
-  const token = jwt.sign({hash: user.hash,role:user.role}, config.secret);
+  const token = jwt.sign({hash: user.hash,role: user.role,nickName: user.nickName}, config.secret);
   res.json(token);
 };
 

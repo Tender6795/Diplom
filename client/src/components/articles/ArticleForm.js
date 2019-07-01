@@ -48,9 +48,9 @@ class ArticleForm extends Component {
   }
 
   fileSelectedHandler = event => {
-    this.setState({
-      photo: event.target.files[0]
-    });
+      this.setState({
+        photo: event.target.files[0]
+      });
   };
 
   onChange(e) {
@@ -172,6 +172,8 @@ class ArticleForm extends Component {
                 <label>Photo</label>
 
                 <input type="file" name="photo" onChange={this.fileSelectedHandler}/>
+
+
               </Form.Field>
               <Loader active={this.state.isLoading} size='medium'>Loading</Loader>
               <Button disabled={this.state.isLoading} type='submit'>Save</Button>

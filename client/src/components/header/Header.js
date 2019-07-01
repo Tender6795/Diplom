@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from "react-router-dom";
-import {logout} from '../actions/authActions';
+import {logout} from '../../actions/authActions';
 import {Button, Menu} from 'semantic-ui-react'
+import HeaderStyles from './Header.module.css';
+
+
 
 class Header extends Component {
   logout(e) {
@@ -15,9 +18,9 @@ class Header extends Component {
     const {isAuthenticated, user} = this.props.auth;
 
     const userLinks = (
-      <Menu.Menu position='right'>
+      <Menu.Menu position='right' >
         <Menu.Item>
-          {user && user.email}
+          {user && user.nickName}
         </Menu.Item>
         <Menu.Item>
           <Button onClick={this.logout.bind(this)}>Logout</Button>
@@ -39,9 +42,10 @@ class Header extends Component {
     );
 
     return (
-      <Menu size='large'>
+      <Menu size='large'  className={HeaderStyles['HeaderMenu']} >
         <Menu.Item>
           <Link to="/">Home</Link>
+          {/*<h1>{this.user.nickName}</h1>*/}
         </Menu.Item>
 
         {isAuthenticated ? userLinks : guestLinks}
