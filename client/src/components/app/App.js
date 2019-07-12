@@ -17,13 +17,6 @@ class App extends Component {
       <Router>
         <Container className={styles['AppContainer']}>
 
-            {/*<div className={styles["Appfog-low"]}>*/}
-              {/*<img alt="..." src={require("../../assets/img/fog-low.png")}/>*/}
-            {/*</div>*/}
-            {/*<div className="fog-low right">*/}
-              {/*<img alt="..." src={require("../../assets/img/fog-low.png")}/>*/}
-            {/*</div>*/}
-
           <Header/>
           <Switch>
             <Route exact path="/" component={Home}/>

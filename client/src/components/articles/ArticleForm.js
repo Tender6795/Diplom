@@ -80,9 +80,12 @@ class ArticleForm extends Component {
       fd.append('author', this.state.author);
 
 
-      if (this.state.photo) {
+      if (this.state.photo.name) {
         fd.append('photo', this.state.photo, this.state.photo.name);
       }
+      // else{
+      //   this.errors.photo="Фотография объязательна";
+      // }
 
       if (this.state.isEdit) {
         this.props.updateArticle(this.state.hash, fd)
@@ -152,7 +155,7 @@ class ArticleForm extends Component {
                   onChange={this.onChange}
                   value={this.state.text}
                   placeholder="Text"
-                  style={{ minHeight: 400 }}
+                  style={{ minHeight: 300 }}
                 />
               </Form.Field>
               <Message error content={errors.text}/>
@@ -170,9 +173,8 @@ class ArticleForm extends Component {
 
               <Form.Field>
                 <label>Photo</label>
-
                 <input type="file" name="photo" onChange={this.fileSelectedHandler}/>
-
+                <Message error content={errors.photo}/>
 
               </Form.Field>
               <Loader active={this.state.isLoading} size='medium'>Loading</Loader>

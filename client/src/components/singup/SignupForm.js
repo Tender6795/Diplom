@@ -124,25 +124,25 @@ class SignupForm extends Component {
                 <Message error content={errors.passwordConfirm}/>
 
 
-                <Form.Field>
+                {/*<Form.Field>*/}
 
-                  <input
-                    type="text"
-                    name="firstName"
-                    onChange={this.onChange}
-                    value={this.state.firstName}
-                    placeholder="First Name"/>
-                </Form.Field>
+                  {/*<input*/}
+                    {/*type="text"*/}
+                    {/*name="firstName"*/}
+                    {/*onChange={this.onChange}*/}
+                    {/*value={this.state.firstName}*/}
+                    {/*placeholder="First Name"/>*/}
+                {/*</Form.Field>*/}
 
-                <Form.Field>
+                {/*<Form.Field>*/}
 
-                  <input
-                    type="text"
-                    name="lastName"
-                    onChange={this.onChange}
-                    value={this.state.lastName}
-                    placeholder="Last Name"/><br/>
-                </Form.Field>
+                  {/*<input*/}
+                    {/*type="text"*/}
+                    {/*name="lastName"*/}
+                    {/*onChange={this.onChange}*/}
+                    {/*value={this.state.lastName}*/}
+                    {/*placeholder="Last Name"/><br/>*/}
+                {/*</Form.Field>*/}
 
 
 

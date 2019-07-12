@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {logout} from '../../actions/authActions';
 import {Button, Menu} from 'semantic-ui-react'
 import HeaderStyles from './Header.module.css';
+import style from "../home/Home.module.css";
 
 
 
@@ -18,7 +19,7 @@ class Header extends Component {
     const {isAuthenticated, user} = this.props.auth;
 
     const userLinks = (
-      <Menu.Menu position='right' >
+      <Menu.Menu position='right' className={style['HeaderMenu']}>
         <Menu.Item>
           {user && user.nickName}
         </Menu.Item>

@@ -56,8 +56,8 @@ class ArticleItem extends Component {
         <Grid.Column width={7}>
 
           <Image size={this.state.pictureSize} src={path} className={style['ArticleItemImage']} />
-          <Button onClick={this.onStateOfArticleChange.bind(this)}
-                  primary style={{marginLeft: '20px' ,width: '23%'}}>
+          <Button positive onClick={this.onStateOfArticleChange.bind(this)}
+                   style={{marginLeft: '17px' }}>
             {this.state.textButton}
           </Button>
         </Grid.Column>
@@ -68,10 +68,13 @@ class ArticleItem extends Component {
           <Header as='h4'>Автор:  {article.author}</Header>
           {isAdmin &&
             <div className='ui two buttons'>
-              <Button inverted color='green' style={{width:'60%'}}>
-                <Link to={`/edit-article/${article.hash}`}>Редактировать</Link>
+              <Button.Group>
+              <Button positive style={{width:'60%'}}>
+                <Link to={`/edit-article/${article.hash}`} style={{color:'white'}}>Редактировать</Link>
               </Button>
-              <Button onClick={this.onDeleteClick.bind(this)} inverted color='red'>Удалить</Button>
+                <Button.Or />
+              <Button onClick={this.onDeleteClick.bind(this)} negative>Удалить</Button>
+              </Button.Group>
             </div>
 
           }

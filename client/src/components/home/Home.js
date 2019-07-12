@@ -40,12 +40,12 @@ class Home extends Component {
     const { isAdmin} = this.props.auth;
     return (
       <Container className={style['HomeContainer']}>
-        <Menu attached='top'>
+        <Menu attached='top' style={{background:'rgba(255,255,255,0.8) '}}>
           {isAdmin &&
           <Menu.Menu>
             <Menu.Item>
               <Link to="/new-article">
-                <Button  inverted color='green'>
+                <Button  positive>
                   Добавить статью
                 </Button>
               </Link>
@@ -63,7 +63,7 @@ class Home extends Component {
           </Menu.Menu>
         </Menu>
 
-        <Segment attached='bottom' className={style['HomeSegmentContainer']}>
+        <Segment attached='bottom' className={style['HomeSegmentContainer']} >
            <ArticleList searchText={this.state.searchText}/>
         </Segment>
       </Container>

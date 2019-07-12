@@ -13,7 +13,9 @@ export default function validateArticleInput(data) {
   if (Validator.isEmpty(data.author)) {
     errors.author = 'This field is required';
   }
-
+// if(Validator.isEmpty(data.photo)){
+//   errors.photo='Фотография обязательна'
+// }
 
   return {
     errors,

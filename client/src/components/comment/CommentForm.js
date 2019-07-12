@@ -61,6 +61,7 @@ class CommentForm extends Component {
                     onChange={this.onChange}
                     id='text'
                     value={this.state.text}
+                    style={{border:'1px solid black'}}
         />
         <Button
           inverted color={this.state.colorButton}

@@ -19,10 +19,6 @@ class ArticlesList extends Component {
       } else {
 
         content = this.props.articles.filter(article => {
-          // for (let key in article) {
-          //   if (article[key].toString().includes(this.props.searchText)) {
-          //     return true;
-          //   }
           return article.title.toLowerCase().includes(this.props.searchText.toLowerCase()) ||
             article.text.toLowerCase().includes(this.props.searchText.toLowerCase());
 
@@ -39,12 +35,12 @@ class ArticlesList extends Component {
     }
 
     return (
-      <Grid >
+      <Grid style={{ border:'1px solid black'}}>
         {content}
       </Grid>
     );
   }
-};
+}
 
 ArticlesList.propTypes = {
   loading: PropTypes.bool,

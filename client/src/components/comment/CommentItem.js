@@ -30,7 +30,7 @@ class CommentItem extends Component {
   render() {
 
     return (
-      <Card fluid style={{height: "100%" ,padding:'10px'}}>
+      <Card fluid style={{height: "100%" ,padding:'10px' ,border:'1px solid black'}}>
         <Card.Content>
           <Card.Header  style={{ font: 'bold  180% serif'}}>
             {this.props.comment.author}
