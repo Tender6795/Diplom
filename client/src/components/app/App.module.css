@@ -2,14 +2,16 @@
     width: 200% !important;
     padding: 20px !important;
     min-height: 100% !important;
-    opacity: .8 !important;
-
+    /*opacity: .8 !important;*/
+/*background: rgba(255,255,255,0.8) !important;*/
 }
 
 body {
-    background-image: url('../../assets/img/auto.gif');
+    background: url('../../assets/img/Auto.jpg');
     background-attachment: fixed;
     background-size: cover;
 }
-
+/*.ui.menu {*/
+    /*background: rgba(255,255,255,0.6) !important;*/
+/*}*/
 

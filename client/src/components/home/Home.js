@@ -40,7 +40,7 @@ class Home extends Component {
     const { isAdmin} = this.props.auth;
     return (
       <Container className={style['HomeContainer']}>
-        <Menu attached='top' style={{background:'rgba(255,255,255,0.8) '}}>
+        <Menu attached='top' style={{background:'rgba(255,255,255,0.9) '}}>
           {isAdmin &&
           <Menu.Menu>
             <Menu.Item>
@@ -55,14 +55,13 @@ class Home extends Component {
           <Menu.Menu position='right'>
             <div className='ui right aligned category search item'>
               <div className='ui transparent icon input'>
-                <input className='prompt' onChange={this.onChange} type='text' placeholder='Поиск статьи...'/>
+                <input className='prompt' onChange={this.onChange} type='text' style={{fontWeight: 'bolder'}} placeholder='Поиск статьи...'/>
                 <i className='search link icon' onClick={this.onSearchClick}/>
               </div>
               <div className='results'/>
             </div>
           </Menu.Menu>
         </Menu>
-
         <Segment attached='bottom' className={style['HomeSegmentContainer']} >
            <ArticleList searchText={this.state.searchText}/>
         </Segment>

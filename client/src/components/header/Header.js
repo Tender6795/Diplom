@@ -24,7 +24,7 @@ class Header extends Component {
           {user && user.nickName}
         </Menu.Item>
         <Menu.Item>
-          <Button onClick={this.logout.bind(this)}>Logout</Button>
+          <Button onClick={this.logout.bind(this)} style={{font: 'bolder'}}>Logout</Button>
         </Menu.Item>
       </Menu.Menu>
     );
